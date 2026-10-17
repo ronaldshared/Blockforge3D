@@ -1,51 +1,34 @@
-## Blockforge 3D - versión tablet v2
+## Blockforge 3D - Edición clara y traslado de fauna
 
-Juego voxel 3D de construcción libre con WebGL nativo, actualizado para computadores y tablets. No requiere instalación de librerías ni conexión con servicios externos.
+### Cambios
+- Iluminación diurna permanente. El mundo ya no se oscurece.
+- Espada visible como herramienta mágica de traslado. No causa daño.
+- Captura y liberación de un animal a la vez.
+- Controles táctiles grandes para tablet.
 
-## Inicio en tablet
+### Tablet
+1. Usa el dispositivo en horizontal.
+2. Joystick izquierdo: mover. Área derecha: mirar.
+3. Apunta a un animal cercano y pulsa **Atrapar**.
+4. Muévete al destino y pulsa **Dejar**.
+5. La liberación se realiza delante del jugador, sobre la superficie disponible.
 
-1. Descomprima el archivo ZIP conservando la estructura de carpetas.
-2. Abra `index.html` en un navegador moderno compatible con WebGL.
-3. Coloque el tablet en posición horizontal.
-4. Seleccione **Nueva partida** para comenzar un mundo nuevo o **Continuar** para recuperar la partida guardada.
-5. Si el navegador solicita permiso para almacenamiento local, permita el acceso para conservar la partida.
+### Computador
+- WASD: mover. Ratón: mirar.
+- E: atrapar o dejar animal.
+- Clic izquierdo: retirar bloque. Clic derecho: colocar.
+- F: vuelo. Esc: pausa.
 
-## Controles táctiles
+Abra `index.html` en un navegador moderno con WebGL.
 
-- **Joystick grande izquierdo:** caminar en cualquier dirección.
-- **Joystick llevado al borde:** correr.
-- **Deslizar el área derecha:** mover la cámara y apuntar.
-- **− Retirar:** mantener presionado para quitar bloques.
-- **＋ Colocar:** mantener presionado para colocar el bloque seleccionado.
-- **▲:** saltar cuando el jugador está en el suelo o subir cuando el vuelo está activo.
-- **▼:** bajar cuando el vuelo está activo.
-- **Volar:** activar o desactivar el modo de vuelo.
-- **Bloque:** avanzar al siguiente material de la barra rápida.
-- **II:** abrir o cerrar el menú de pausa.
+### Compatibilidad funcional validada
+- Se mantienen construcción y retirada continua, selección de bloques, regiones, terreno, árboles, planicies, colisiones, salto, carrera, vuelo, retorno, pausa, guardado manual, autoguardado, continuación, fauna y control horario.
+- El ciclo horario continúa funcionando, pero la iluminación mínima se mantiene clara.
+- Un animal transportado también queda incluido en el guardado y se recupera al continuar.
 
-La cruz ubicada en el centro de la pantalla indica el bloque sobre el que se realizará la acción. La barra inferior muestra el material actualmente seleccionado.
 
-## Guardado
+### Fauna ampliada
+La fauna conserva el estilo voxel y ahora incluye ovejas, cerditos, vacas, gallinas, caballos, perritos, chetas, tigres, elefantes, jirafas y conejos. Todos los animales pueden atraparse y dejarse en otra ubicación mediante la espada de traslado.
 
-- Presione **II** y luego **Guardar** para almacenar manualmente la partida.
-- El juego también realiza guardados automáticos durante la sesión.
-- **Continuar** carga la última partida almacenada en el navegador utilizado.
-
-## Controles para computador
-
-- WASD para mover.
-- Espacio para saltar o subir.
-- Ctrl para bajar.
-- Shift para correr.
-- Clic izquierdo para retirar y clic derecho para colocar.
-- 1-8 o rueda para seleccionar.
-- F para activar el vuelo.
-- R para volver al punto inicial.
-- T para cambiar la hora.
-- Esc para pausar.
-
-## Recomendaciones
-
-- Utilice orientación horizontal para disponer de toda el área de juego.
-- Si el juego no abre correctamente como archivo local, ejecútelo desde un servidor web local o desde un alojamiento web estático.
-- Mantenga juntos `index.html`, `styles.css` y la carpeta `js`.
+### Barra rápida
+Cada elemento de la barra rápida muestra un nombre pequeño debajo del icono. El diseño mantiene botones grandes y separación suficiente para tablet en orientación horizontal.

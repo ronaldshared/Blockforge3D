@@ -1,66 +1,18 @@
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#132033;color:#fff;font-family:Consolas,monospace}canvas{display:block;width:100%;height:100%;image-rendering:pixelated}.hidden{display:none!important}.overlay{position:fixed;inset:0;display:grid;place-items:center;background:#07101bd9;z-index:10}.panel{width:min(540px,92vw);padding:24px;background:#182432;border:4px solid #080c10;box-shadow:0 0 0 3px #758292,10px 10px #0008;text-align:center}h1{font-size:42px;color:#8cdb73;text-shadow:3px 3px #000}button,input{width:100%;margin:7px 0;padding:10px;color:#fff;background:#324559;border:3px solid #0a0d11;font:inherit}button:hover{background:#4e7048;cursor:pointer}#hud{position:fixed;inset:0;pointer-events:none}#stats{position:absolute;top:12px;left:12px;background:#0009;border:2px solid #fff5;padding:8px;color:#cceaff}#cross{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:30px;text-shadow:1px 1px #000}#tip{position:absolute;left:50%;top:55%;transform:translateX(-50%);background:#000b;padding:5px 9px}#hotbar{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:4px}.slot{width:54px;height:54px;border:3px solid #718091;background:#101820cc;display:grid;place-items:center;position:relative}.slot.sel{border-color:#fff;transform:translateY(-5px)}.slot small{position:absolute;right:2px;bottom:1px}@media(max-width:650px){.slot{width:42px;height:42px}}
+/* Version clara y controles tactiles grandes */
+.instructions{text-align:left}.instructions summary{text-align:center;padding:10px;background:#243548}.instructions h3{color:#8cdb73}.instructions li{margin:7px 0;line-height:1.4}
+#captureStatus{position:absolute;top:54px;left:12px;background:#08263dcc;border:2px solid #9de7ff;padding:7px;color:#fff}
+#sword{position:absolute;right:19%;bottom:8%;width:42px;height:190px;transform:rotate(28deg);transform-origin:bottom center;filter:drop-shadow(4px 5px 2px #0008)}
+#sword .blade{position:absolute;left:12px;top:0;width:18px;height:125px;background:linear-gradient(90deg,#9fc7dc,#fff,#8fb4c8);clip-path:polygon(50% 0,100% 12%,100% 100%,0 100%,0 12%);border:2px solid #415a68}
+#sword .guard{position:absolute;left:-10px;top:122px;width:62px;height:12px;background:#d6a531;border:3px solid #684b10;border-radius:7px}
+#sword .handle{position:absolute;left:13px;top:137px;width:16px;height:48px;background:repeating-linear-gradient(#6e3e20 0 7px,#c58b45 7px 11px);border:2px solid #351b0f}
+#touchControls{position:fixed;inset:0;z-index:6;pointer-events:none;touch-action:none;user-select:none;-webkit-user-select:none}.touch-zone{position:absolute;bottom:0;height:72%;pointer-events:auto;touch-action:none}#moveZone{left:0;width:42%}#lookZone{right:0;width:58%}.stick-base{position:absolute;left:30px;bottom:34px;width:170px;height:170px;border-radius:50%;background:#10182099;border:4px solid #d8efffbb}.stick-knob{position:absolute;left:45px;top:45px;width:74px;height:74px;border-radius:50%;background:#8cdb73dd;border:4px solid #fff}.touch-btn{position:absolute;width:84px;height:84px;margin:0;padding:0;border-radius:50%;border:4px solid #fff;background:#324559e8;color:#fff;font:bold 30px Consolas;pointer-events:auto;touch-action:none}.touch-btn.small{width:86px;height:56px;border-radius:14px;font-size:16px}.touch-btn.capture{width:104px;height:64px;border-radius:16px;font-size:17px;background:#286c87}#touchJump{right:28px;bottom:146px}#touchPlace{right:124px;bottom:46px}#touchRemove{right:28px;bottom:46px}#touchDown{right:124px;bottom:146px}#touchCapture{right:224px;bottom:118px}#touchFly{right:224px;bottom:52px}#touchNext{right:320px;bottom:52px}#touchPause{right:18px;top:18px;width:66px;height:56px}@media(pointer:fine){#touchControls{display:none!important}}@media(orientation:portrait) and (pointer:coarse){#touchControls:before{content:'Gira el tablet a posicion horizontal';position:absolute;inset:0;display:grid;place-items:center;background:#b7e4ffee;color:#10263a;font:22px Consolas;text-align:center;z-index:20;pointer-events:auto}}@media(pointer:coarse){.panel{max-height:92vh;overflow:auto}.slot{width:42px;height:42px}#stats{font-size:12px;max-width:55%}#sword{right:23%;bottom:7%;transform:rotate(28deg) scale(.85)}}
 
-/* Controles tactiles para tablet */
-#touchControls{position:fixed;inset:0;z-index:6;pointer-events:none;touch-action:none;user-select:none;-webkit-user-select:none}
-.touch-zone{position:absolute;bottom:0;height:72%;pointer-events:auto;touch-action:none}
-#moveZone{left:0;width:42%}
-#lookZone{right:0;width:58%}
-.stick-base{position:absolute;left:28px;bottom:30px;width:132px;height:132px;border-radius:50%;background:#10182099;border:3px solid #d8efff88;box-shadow:0 0 0 6px #0003}
-.stick-knob{position:absolute;left:36px;top:36px;width:56px;height:56px;border-radius:50%;background:#8cdb73cc;border:3px solid #fff9;transform:translate(0,0)}
-#touchActions{position:absolute;inset:0;pointer-events:none}
-.touch-btn{position:absolute;width:66px;height:66px;margin:0;padding:0;border-radius:50%;border:3px solid #fff9;background:#324559dd;color:#fff;font:bold 24px Consolas,monospace;pointer-events:auto;touch-action:none;box-shadow:0 4px 0 #080c10aa}
-.touch-btn:active,.touch-btn.active{background:#6ca35ddd;transform:translateY(2px);box-shadow:0 2px 0 #080c10aa}
-.touch-btn.danger{background:#8a3f45dd}
-.touch-btn.small{width:62px;height:46px;border-radius:12px;font-size:13px}
-#touchJump{right:26px;bottom:116px}
-#touchPlace{right:104px;bottom:38px}
-#touchRemove{right:26px;bottom:38px}
-#touchDown{right:104px;bottom:116px}
-#touchFly{right:184px;bottom:38px}
-#touchNext{right:184px;bottom:92px}
-#touchPause{right:18px;top:18px;width:50px;height:44px}
-@media (pointer:fine){#touchControls{display:none!important}}
-@media (pointer:coarse), (max-width:1024px){
-  .panel{max-height:92vh;overflow:auto;padding:18px}
-  h1{font-size:clamp(28px,7vw,42px);margin:8px 0}
-  #stats{font-size:12px;max-width:58%;top:8px;left:8px}
-  #tip{top:58%;font-size:12px}
-  #hotbar{bottom:10px;gap:2px;max-width:48%;overflow:hidden}
-  .slot{width:36px;height:36px;border-width:2px;font-size:14px}
-}
-@media (orientation:portrait) and (pointer:coarse){
-  #touchControls::before{content:'Gira el tablet a posicion horizontal';position:absolute;inset:0;display:grid;place-items:center;background:#07101bee;color:#fff;font:20px Consolas,monospace;text-align:center;padding:30px;z-index:20;pointer-events:auto}
-}
-
-
-/* Ajuste v2: instrucciones visibles y controles tactiles grandes */
-.instructions{text-align:left;margin-top:12px}
-.instructions summary{text-align:center;cursor:pointer;padding:10px;background:#243548;border:2px solid #758292}
-.instructions h3{margin:14px 0 4px;color:#8cdb73}
-.instructions ol{margin:8px 0 8px 22px;padding:0;line-height:1.45}
-.instructions li{margin:7px 0}
-.instructions p{line-height:1.45}
-
-@media (pointer:coarse), (max-width:1024px){
-  .stick-base{left:30px;bottom:34px;width:170px;height:170px;border-width:4px}
-  .stick-knob{left:45px;top:45px;width:74px;height:74px;border-width:4px}
-  .touch-btn{width:84px;height:84px;border-width:4px;font-size:32px}
-  .touch-btn.small{width:86px;height:56px;border-radius:14px;font-size:16px}
-  #touchJump{right:28px;bottom:146px}
-  #touchPlace{right:124px;bottom:46px}
-  #touchRemove{right:28px;bottom:46px}
-  #touchDown{right:124px;bottom:146px}
-  #touchFly{right:224px;bottom:46px}
-  #touchNext{right:224px;bottom:112px}
-  #touchPause{right:18px;top:18px;width:66px;height:56px;font-size:18px}
-  #hotbar{bottom:12px;max-width:44%}
-  .slot{width:42px;height:42px;font-size:17px}
-}
-
-@media (pointer:coarse) and (max-height:600px){
-  .stick-base{width:150px;height:150px}
-  .stick-knob{left:40px;top:40px;width:64px;height:64px}
-  .touch-btn{width:76px;height:76px}
-  #touchJump{bottom:130px}
-  #touchDown{bottom:130px}
-}
+/* Hotbar con nombres pequeños bajo cada elemento */
+#hotbar{bottom:26px;align-items:flex-start;overflow:visible}
+.slot{height:62px;padding-bottom:18px;overflow:visible}
+.slotIcon{display:block;font-size:20px;line-height:34px}
+.slotName{position:absolute;left:50%;bottom:-17px;transform:translateX(-50%);width:74px;color:#fff;background:#101820e6;border:1px solid #718091;padding:2px 3px;font-size:9px;line-height:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;text-shadow:1px 1px #000}
+.slot.sel .slotName{border-color:#fff;background:#2d4658}
+@media(pointer:coarse){#hotbar{left:43%;bottom:30px;max-width:52%;gap:3px}.slot{width:50px;height:64px}.slotIcon{font-size:21px}.slotName{width:62px;font-size:8px;bottom:-16px}#touchNext{right:330px}}
+@media(pointer:coarse) and (max-width:900px){#hotbar{left:42%;transform:translateX(-50%) scale(.88);transform-origin:bottom center}.slot{width:46px}.slotName{width:56px}}
