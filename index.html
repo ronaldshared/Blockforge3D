@@ -1,2 +1,76 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Blockforge 3D</title><link rel="stylesheet" href="styles.css"></head><body><canvas id="game"></canvas><section id="menu" class="overlay"><div class="panel"><h1>BLOCKFORGE 3D</h1><p>Construcción libre, fauna voxel y terreno por regiones.</p><label>Semilla <input id="seed" value="VALLE-CLARO"></label><button id="new">Nueva partida</button><button id="continue">Continuar</button><details class="instructions"><summary>Instrucciones y controles</summary><h3>Tablet</h3><ol><li>Usa el tablet en horizontal.</li><li>Mueve el joystick izquierdo para caminar y desliza el lado derecho para mirar.</li><li>Usa − para retirar, ＋ para colocar, ▲ para saltar/subir y ▼ para bajar.</li><li>Apunta a un animal y pulsa <strong>Atrapar</strong>. La espada funciona como herramienta mágica de traslado, sin dañar al animal.</li><li>Ve a otro lugar y pulsa <strong>Dejar</strong> para liberarlo frente al jugador.</li><li>Usa <strong>II</strong> para pausar y guardar.</li></ol><h3>Computador</h3><p>WASD mover · Ratón mirar · Espacio saltar · Clic izquierdo retirar · Clic derecho colocar · E atrapar/dejar animal · F volar · Esc pausa.</p></details></div></section><section id="pause" class="overlay hidden"><div class="panel"><h2>Pausa</h2><button id="resume">Continuar</button><button id="save">Guardar</button><button id="exit">Menú</button></div></section><div id="hud" class="hidden"><div id="stats"></div><div id="cross">+</div><div id="tip"></div><div id="captureStatus"></div><div id="sword" aria-hidden="true"><span class="blade"></span><span class="guard"></span><span class="handle"></span></div><div id="hotbar"></div></div>
-<div id="touchControls" class="hidden" aria-label="Controles táctiles"><div id="moveZone" class="touch-zone"><div id="moveBase" class="stick-base"><div id="moveStick" class="stick-knob"></div></div></div><div id="lookZone" class="touch-zone" aria-label="Deslizar para mirar"></div><div id="touchActions"><button id="touchRemove" class="touch-btn danger">−</button><button id="touchPlace" class="touch-btn">＋</button><button id="touchJump" class="touch-btn">▲</button><button id="touchDown" class="touch-btn">▼</button><button id="touchCapture" class="touch-btn capture">Atrapar</button><button id="touchFly" class="touch-btn small">Volar</button><button id="touchNext" class="touch-btn small">Bloque</button><button id="touchPause" class="touch-btn small">II</button></div></div><script src="js/game.js"></script></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blockforge 3D - Edición Expandida</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<section id="menu" class="overlay">
+  <div class="panel">
+    <h1>BLOCKFORGE 3D</h1>
+    <p>Mundo ampliado, agua con físicas y fauna mejorada.</p>
+    <label>Semilla <input id="seed" value="VALLE-CLARO"></label>
+    <button id="new">Nueva partida</button>
+    <button id="continue">Continuar</button>
+    <details class="instructions">
+      <summary>Instrucciones y controles</summary>
+      <h3>Tablet</h3>
+      <ol>
+        <li>Usa el tablet en horizontal.</li>
+        <li>Joystick izquierdo: mover. Desliza a la derecha: mirar.</li>
+        <li>Usa − para retirar, ＋ para colocar, ▲ para saltar y ▼ para bajar.</li>
+        <li><strong>Agua:</strong> Selecciona el cubo de agua y colócalo. Fluye hacia abajo y se expande por el suelo.</li>
+        <li>Apunta a un animal y pulsa <strong>Atrapar</strong>. Pulsa <strong>Dejar</strong> para liberarlo.</li>
+      </ol>
+      <h3>Computador</h3>
+      <p>WASD mover · Ratón mirar · Espacio saltar · Clic izq o <strong>K</strong> retirar · Clic der o <strong>L</strong> colocar · Rueda cambiar bloque · E atrapar/dejar · F volar · F3 ocultar HUD · Esc pausa.</p>
+    </details>
+  </div>
+</section>
+
+<section id="pause" class="overlay hidden">
+  <div class="panel">
+    <h2>Pausa</h2>
+    <button id="resume">Continuar</button>
+    <button id="save">Guardar</button>
+    <button id="export">Exportar partida</button>
+    <label class="importLabel">Importar partida
+      <input type="file" id="import" accept=".json,application/json">
+    </label>
+    <button id="exit">Menú</button>
+  </div>
+</section>
+
+<div id="hud" class="hidden">
+  <div id="stats"></div>
+  <div id="cross">+</div>
+  <div id="tip"></div>
+  <div id="captureStatus"></div>
+  <canvas id="minimap" width="100" height="100"></canvas>
+  <div id="hotbar"></div>
+</div>
+
+<div id="touchControls" class="hidden" aria-label="Controles táctiles">
+  <div id="moveZone" class="touch-zone">
+    <div id="moveBase" class="stick-base"><div id="moveStick" class="stick-knob"></div></div>
+  </div>
+  <div id="lookZone" class="touch-zone" aria-label="Deslizar para mirar"></div>
+  <div id="touchActions">
+    <button id="touchRemove" class="touch-btn danger">−</button>
+    <button id="touchPlace" class="touch-btn">＋</button>
+    <button id="touchJump" class="touch-btn">▲</button>
+    <button id="touchDown" class="touch-btn">▼</button>
+    <button id="touchCapture" class="touch-btn capture">Atrapar</button>
+    <button id="touchFly" class="touch-btn small">Volar</button>
+    <button id="touchNext" class="touch-btn small">Bloque</button>
+    <button id="touchPause" class="touch-btn small">II</button>
+  </div>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>
